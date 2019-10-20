@@ -1,0 +1,6 @@
+.weather-input {
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid gray;
+}

@@ -1,0 +1,6 @@
+.weather-form {
+  display: flex;
+}
+.weather-form__input-wrapper {
+  margin-right: 40px;
+}

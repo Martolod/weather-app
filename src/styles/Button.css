@@ -1,0 +1,13 @@
+.weather-button {
+  display: flex;
+  height: 40px;
+  background-color: #f8e81c;
+  box-shadow: 0 1px 2px 0 rgba(64,61,4,0.5);
+  border-radius: 3px;
+}
+.weather-button:hover {
+  background-color: #f9ec49;
+}
+.weather-button_text {
+  margin: auto 20px;
+}
