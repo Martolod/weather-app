@@ -1,8 +1,6 @@
-import { actionsTypes } from "../actions";
-
 const weather = (state = [], action) => { 
   switch (action.type) {
-    case actionsTypes.ADD:
+    case 'ADD':
       console.log(action);
       return [
         ...state,
@@ -12,6 +10,10 @@ const weather = (state = [], action) => {
           active: true
         }
       ]
+    case 'TOGGLE_ACTIVE':
+      return state.map(weather =>
+        weather.id === action.id ? { ...weather, active: !weather.active } : weather
+      )
     default:
       return state;
   }

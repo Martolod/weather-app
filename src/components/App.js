@@ -1,12 +1,12 @@
 import React from 'react';
 import '../styles/App.css';
-import Form from './Form';
+import FormData from '../containers/FormData';
 import Tabs from './Tabs';
 
 function App() {
   return (
     <div>
-      <Form/>
+      <FormData/>
       <Tabs/>
     </div>
   );

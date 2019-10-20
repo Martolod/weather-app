@@ -6,6 +6,7 @@ import {
   Link
 } from 'react-router-dom';
 import WeatherData from '../containers/WeatherData';
+import { filterTypes } from '../actions';
 
 /**
  * Tabs component
@@ -34,9 +35,11 @@ class Tabs extends React.Component {
             </Route>
             <Route path="/active">
               ACTIVE
+              <WeatherData filter="ACTIVE"/>
             </Route>
             <Route path="/deleted">
               DELETED
+              <WeatherData filter="DELETED"/>
             </Route>
         </Switch>
         </div>

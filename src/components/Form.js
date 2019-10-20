@@ -2,8 +2,6 @@ import React from 'react';
 import Button from './Button';
 import Input from './Input';
 import '../styles/Form.css';
-import { connect } from 'react-redux'
-import addWeatherData from '../actions'
 
 /**
  * Form component for weather widget
@@ -20,9 +18,8 @@ class Form extends React.Component {
   }
 
   onClickButton() {
-    const cityName = this.state.value;
-    console.log(cityName);
-    this.props.dispatch(addWeatherData(cityName));
+    console.log(this.state.value);
+    this.props.addWeatherData(this.state.value);
     this.setState({value: ''});
   }
 
@@ -42,4 +39,4 @@ class Form extends React.Component {
   }
 }
 
-export default connect()(Form);
+export default Form;
