@@ -1,6 +1,6 @@
 import { actionsTypes } from "../actions";
 
-const weatherRedicer = (state = [], action) => { 
+const weather = (state = [], action) => { 
   switch (action.type) {
     case actionsTypes.ADD:
       console.log(action);
@@ -17,4 +17,4 @@ const weatherRedicer = (state = [], action) => {
   }
 }
 
-export default weatherRedicer;
+export default weather;
