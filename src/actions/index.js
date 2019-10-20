@@ -6,16 +6,24 @@ export const actionTypes = {
   DOWN: 'DONW',
   OPEN_MODAL: 'OPEN_MODAL',
   CLOSE_MODAL: 'CLOSE_MODAL',
-  
 }
 
-let nextTodoId = 0
-export const add = name => ({
-    type: actionTypes.ADD,
-    id: nextTodoId++,
-    name
+export const add = data => ({
+  type: actionTypes.ADD,
+  id: data.id,
+  name: data.name,
+  temp: data.main.temp
 });
 
+export const up = id => ({
+  type: actionTypes.UP,
+  id
+});
+
+export const down = id => ({
+  type: actionTypes.DOWN,
+  id
+});
 
 export const toggle = id => ({
   type: actionTypes.TOGGLE,

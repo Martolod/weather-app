@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import List from '../components/List/List';
-import { toggle, openModal, closeModal } from '../actions';
+import { toggle, up, down, openModal, closeModal } from '../actions';
 
 /**
  * Фильтруем данные в зависимости от выбранной вкладки
@@ -18,11 +18,14 @@ function _getFiltredData(state, props) {
 }
 
 const mapStateToProps = (state, props) => ({
-  weather: _getFiltredData(state, props)
+  weather: _getFiltredData(state, props),
+  showMoveButtons: props.filter === undefined
 })
 
 const mapDispatchToProps = dispatch => ({
   toggleActive: id => dispatch(toggle(id)),
+  moveUp: id => dispatch(up(id)),
+  moveDown: id => dispatch(down(id)),
   openModal: ({ modalType, modalProps }) => dispatch(openModal({modalType, modalProps})),
   closeModal: () => dispatch(closeModal())
 })

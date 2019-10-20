@@ -2,5 +2,11 @@
   display: flex;
 }
 .weather-form__input-wrapper {
-  margin-right: 40px;
+  margin-right: 30px;
+}
+.weather-form__info {
+  height: 15px;
+}
+.weather-form__info_error {
+  color: #a02424;
 }

@@ -1,7 +1,7 @@
 .weather-tabs__navbar {
   display: flex;
 }
-.weather-tabs__tab {
+.weather-tab__link {
   width: 130px;
   height: 20px;
   cursor: pointer;
@@ -15,7 +15,7 @@
   color: black;
   text-transform: uppercase;
 }
-.weather-tabs__tab_active {
+.weather-tabs__tab_active .weather-tab__link {
   border-bottom: 3px solid #135f8b;
 }
 .weather-tabs__navbar {

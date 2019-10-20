@@ -3,10 +3,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink,
+  Redirect
 } from 'react-router-dom';
 import WeatherList from '../../containers/WeatherList';
-import './Weather.css';
+import './Tabs.css';
 
 /**
  * Tabs component
@@ -23,7 +24,7 @@ class Tabs extends React.Component {
   tabs = [
     {
       id: 'all',
-      link: '/',
+      link: '/all',
       name: 'All',
       filter: null
     },
@@ -44,30 +45,32 @@ class Tabs extends React.Component {
   render() {
     return (
       <Router>
+        <Redirect exact from="/" to={this.tabs[0].link} />
+
         <div className="weather-tabs__wrapper">
           <div className="weather-tabs__navbar">
           {
             this.tabs.map(tab => (
-              <div 
-                key={tab.id} 
-                className={`weather-tabs__tab ${tab.id === this.state.active ? 'weather-tabs__tab_active' : ''}`} 
-                onClick={() => this.setState({active: tab.id})}
-              >
-                <Link to={tab.link}>{tab.name}</Link>
+              <div key={tab.id} className={`weather-tabs__tab`} >
+                <NavLink activeClassName="weather-tabs__tab_active" to={tab.link}>
+                  <div className="weather-tab__link" onClick={() => this.setState({active: tab.id})}>
+                    {tab.name}
+                  </div>
+                </NavLink>
               </div>
             ))
           }
           </div>
 
           <Switch>
-            <Route exact path="/">
+            <Route exact path={this.tabs[0].link}>
               <WeatherList/>
             </Route>
             <Route path={this.tabs[1].link}>
-              <WeatherList filter="ACTIVE"/>
+              <WeatherList filter={this.tabs[1].filter}/>
             </Route>
             <Route path={this.tabs[2].link}>
-              <WeatherList filter="DELETED"/>
+              <WeatherList filter={this.tabs[2].filter}/>
             </Route>
         </Switch>
 

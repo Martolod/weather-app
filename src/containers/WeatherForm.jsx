@@ -3,7 +3,7 @@ import Form from '../components/Form/Form';
 import { add } from '../actions';
 
 const mapDispatchToProps = dispatch => ({
-  addWeatherData: cityName => dispatch(add(cityName))
+  addWeatherData: data => dispatch(add(data))
 });
 
 export default connect(

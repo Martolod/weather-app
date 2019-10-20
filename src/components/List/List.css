@@ -1,3 +1,11 @@
-.weather-item {
-  display: flex;
+.weather-table {
+  min-width: 600px;
+  width: 600px;
+}
+.weather-row {
+  display: table-row;
+}
+.weather-cell {
+  display: table-cell;
+  padding: 4px 40px 4px 0;
 }
