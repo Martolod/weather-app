@@ -5,7 +5,6 @@ export const addAction = name => ({
     name
 });
 
-
 export const filterTypes = {
   ALL: 'ALL',
   ACTIVE: 'ACTIVE',
@@ -16,4 +15,3 @@ export const toggleActive = id => ({
   type: 'TOGGLE_ACTIVE',
   id
 });
-

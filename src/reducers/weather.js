@@ -1,4 +1,10 @@
-const weather = (state = [], action) => { 
+const initial_state = [{
+  id: -1,
+  name: 'Урюпинск',
+  active: true
+}];
+
+const weather = (state = initial_state, action) => { 
   switch (action.type) {
     case 'ADD':
       console.log(action);

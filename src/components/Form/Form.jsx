@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from './Button';
-import Input from './Input';
-import '../styles/Form.css';
+import Button from '../Button/Button';
+import Input from '../Input/Input';
+import './Form.css';
 
 /**
  * Form component for weather widget

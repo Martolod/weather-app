@@ -1,15 +1,23 @@
 import React from 'react';
-import Button from './Button';
-import '../styles/WeatherList.css'
+import Button from '../Button/Button';
+import './List.css'
 
 /**
  * Weather list component
  */
-class WeatherList extends React.Component {
+class List extends React.Component {
 
   constructor(props) {
     super(props);
-    this.weatherItem = this.weatherItem.bind(this)
+    this.weatherItem = this.weatherItem.bind(this);
+  }
+
+  toggleItemActive(item) {
+    if (item.active) {
+      this.props.openConfirmModal(item);
+      console.log('openModal');
+    } 
+    this.props.toggleActive(item.id);
   }
 
   weatherItem(item) {
@@ -18,7 +26,7 @@ class WeatherList extends React.Component {
       <div>
         <Button 
           text={item.active ? 'Delete' : 'Restore'} 
-          onClick={() => this.props.toggleActive(item.id)}
+          onClick={(item) => this.toggleItemActive(item)}
         />
       </div>
     </div>
@@ -34,4 +42,4 @@ class WeatherList extends React.Component {
   }
 }
 
-export default WeatherList;
+export default List;

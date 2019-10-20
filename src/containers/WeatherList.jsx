@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
-import WeatherList from '../components/WeatherList';
+import List from '../components/List/List';
 import { toggleActive, filterTypes } from '../actions';
 
-function getFiltredData(state, param) {
-  switch (param.filter) {
+/**
+ * Фильтруем данные в зависимости от выбранной вкладки
+ */
+function _getFiltredData(state, props) {
+  switch (props.filter) {
     case 'ACTIVE':
       return state.weather.filter(el => el.active);
     case 'DELETED':
@@ -13,17 +16,18 @@ function getFiltredData(state, param) {
   }
 }
 
-const mapStateToProps = (state, param) => ({
-  weather: getFiltredData(state, param)
+const mapStateToProps = (state, props) => ({
+  weather: _getFiltredData(state, props)
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleActive: id => dispatch(toggleActive(id))
+  toggleActive: id => dispatch(toggleActive(id)),
+  openConfirmModal: () => {},
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(WeatherList)
+)(List)
 
 

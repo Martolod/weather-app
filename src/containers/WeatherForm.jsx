@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-import Form from '../components/Form';
+import Form from '../components/Form/Form';
 import { addAction } from '../actions';
-
-// const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
   addWeatherData: cityName => dispatch(addAction(cityName))

@@ -5,8 +5,8 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import WeatherData from '../containers/WeatherData';
-import { filterTypes } from '../actions';
+import WeatherList from '../../containers/WeatherList';
+// import { filterTypes } from '../../actions';
 
 /**
  * Tabs component
@@ -31,15 +31,15 @@ class Tabs extends React.Component {
           <Switch>
             <Route exact path="/">
               ALL
-              <WeatherData/>
+              <WeatherList/>
             </Route>
             <Route path="/active">
               ACTIVE
-              <WeatherData filter="ACTIVE"/>
+              <WeatherList filter="ACTIVE"/>
             </Route>
             <Route path="/deleted">
               DELETED
-              <WeatherData filter="DELETED"/>
+              <WeatherList filter="DELETED"/>
             </Route>
         </Switch>
         </div>
