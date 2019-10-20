@@ -1,0 +1,23 @@
+.weather-tabs__navbar {
+  display: flex;
+}
+.weather-tabs__tab {
+  width: 130px;
+  height: 20px;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #d6d6d6;
+}
+.weather-tabs__tab a {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+}
+.weather-tabs__tab_active {
+  border-bottom: 3px solid #135f8b;
+}
+.weather-tabs__navbar {
+  margin-bottom: 30px;
+}

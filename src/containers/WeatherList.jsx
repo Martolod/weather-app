@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import List from '../components/List/List';
-import { toggleActive, filterTypes } from '../actions';
+import { toggle, openModal, closeModal } from '../actions';
 
 /**
  * Фильтруем данные в зависимости от выбранной вкладки
  */
 function _getFiltredData(state, props) {
+  console.log(props);
   switch (props.filter) {
     case 'ACTIVE':
       return state.weather.filter(el => el.active);
@@ -21,8 +22,9 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleActive: id => dispatch(toggleActive(id)),
-  openConfirmModal: () => {},
+  toggleActive: id => dispatch(toggle(id)),
+  openModal: ({ modalType, modalProps }) => dispatch(openModal({modalType, modalProps})),
+  closeModal: () => dispatch(closeModal())
 })
 
 export default connect(

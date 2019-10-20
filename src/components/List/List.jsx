@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import './List.css'
+import Modal from '../Modal/Modal';
 
 /**
  * Weather list component
@@ -12,13 +13,13 @@ class List extends React.Component {
     this.weatherItem = this.weatherItem.bind(this);
   }
 
-  toggleItemActive(item) {
-    if (item.active) {
-      this.props.openConfirmModal(item);
-      console.log('openModal');
-    } 
-    this.props.toggleActive(item.id);
+  openModal() {
+    this.props.openModal({
+      modalType: Modal,
+      modalProps: null
+    });
   }
+
 
   weatherItem(item) {
     return <div key={item.id} className="weather-item">
@@ -26,7 +27,7 @@ class List extends React.Component {
       <div>
         <Button 
           text={item.active ? 'Delete' : 'Restore'} 
-          onClick={(item) => this.toggleItemActive(item)}
+          onClick={() => item.active ? this.props.toggleActive(item.id) :  this.openModal('confirm')}
         />
       </div>
     </div>

@@ -1,26 +1,53 @@
 
 import React from 'react'
-// import Button from './Button'
+import ReactModal from 'react-modal';
+import ModalConfirm from './ModalConfirm';
+import ModalChange from './ModalChange';
+import './Modal.css'
 
-const Modal = ({ closeModal, title, message }) => {
-  return (
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5
-          className="modal-title"
-        >{title}</h5>
-        <button type="button" className="close" aria-label="Close" onClick={closeModal}>
-          <span aria-hidden="true">&times;</span>
-        </button>
+export const modalTypes = {
+  confirm: 'confirm',
+  change: 'change'
+}
+
+class Modal extends React.Component{
+  constructor(props) {
+    super(props);
+    console.log(111, props);
+    this.state = {
+      modalIsOpen: false,
+      modalType: null
+    };
+    this.closeModal = this.closeModal.bind(this)
+  }
+
+  closeModal() {
+    this.props.closeModal();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props) {
+      this.setState({
+        modalIsOpen: nextProps.modal.isOpen
+      })
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <ReactModal
+          isOpen={this.state.modalIsOpen}
+          // ariaHideApp={false}
+          // className="weather-modal__dialog"
+          // overlayClassName="weather-modal__overlay"
+        > 
+          {this.state.modalType === modalTypes.change ? <ModalChange/> : <ModalConfirm/>}
+          <div onClick={this.closeModal}>СКРОЙСЫ</div>
+        </ReactModal>
       </div>
-      <div className="modal-body">
-        <p>{message}</p>
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" onClick={closeModal}>close</button>
-      </div>
-    </div>
-  )
+    )
+  } 
 }
 
 export default Modal

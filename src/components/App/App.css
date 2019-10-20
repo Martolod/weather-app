@@ -1,0 +1,11 @@
+.weather-app {
+  display: flex;
+  width: 100%;
+}
+.weather-widget {
+  max-width: 600px;
+  margin: 100px auto;
+}
+.weather-widget__form-wrapper {
+  margin-bottom: 40px;
+}
