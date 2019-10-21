@@ -1,7 +1,7 @@
 .weather-button {
   display: flex;
   height: 30px;
-  background-color: #bcdad9;
+  background-color: #c6d7f1;
   box-shadow: 0 1px 2px 0 rgba(64,61,4,0.5);
   border-radius: 3px;
 }
@@ -10,4 +10,13 @@
 }
 .weather-button_text {
   margin: auto 20px;
+}
+.weather-button.weather-button_disabled {
+  background-color: #dfdfdf;
+}
+.weather-button_warn {
+  background-color: #f5c2c2;
+}
+.weather-button_calm {
+  background-color: #b2e9ad;
 }

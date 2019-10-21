@@ -9,3 +9,6 @@
   display: table-cell;
   padding: 4px 40px 4px 0;
 }
+.weather-cell_pointer {
+  cursor: pointer;
+}

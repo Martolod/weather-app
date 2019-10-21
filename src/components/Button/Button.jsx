@@ -2,19 +2,41 @@ import React from 'react';
 import './Button.css';
 
 /**
- * Button component 
+ * Button component
  * @param text - text for button
  * @param onClick - click handler
  * @param className - additional class (optional)
+ * @param disabled - (optional)
  */
-export const Button = ({text, onClick, className = ''}) => { 
-  return (
-    <div onClick={onClick} className={`weather-button ${className}`}>
-      <div className="weather-button_text">
-        {text}
+class Button extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.onClickButton = this.onClickButton.bind(this);
+  }
+
+  onClickButton() {
+    if (this.props.disabled) {
+      return;
+    }
+    this.props.onClick();
+  }
+
+  render() {
+    return (
+      <div
+        onClick={this.onClickButton}
+        className={`weather-button
+          ${this.props.className ? this.props.className : ''}
+          ${this.props.disabled ? 'weather-button_disabled' : ''
+        }`
+      }>
+        <div className="weather-button_text">
+          {this.props.text}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Button

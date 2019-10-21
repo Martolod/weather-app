@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '../Button/Button';
 import './List.css'
-import Modal from '../Modal/Modal';
 
 /**
  * Weather list component
@@ -10,47 +9,67 @@ class List extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(12345, props);
     this.weatherItem = this.weatherItem.bind(this);
   }
 
-  openModal() {
+  openModal(type, props) {
     this.props.openModal({
-      modalType: Modal,
-      modalProps: null
+      modalType: type,
+      modalProps: props
     });
   }
 
 
   weatherItem(item) {
     return <div key={item.id} className="weather-row">
-      <div className="weather-cell">{item.name}</div>
-      <div className="weather-cell">{item.temp}&#8451;</div>
+      <div
+        onClick={() => this.openModal('change', {item})}
+        className="weather-cell weather-cell_pointer"
+      >
+        {item.name}
+      </div>
+      <div
+        onClick={() => this.openModal('change', {item})}
+        className="weather-cell weather-cell_pointer"
+      >
+        {item.temp}&#8451;
+      </div>
       <div className="weather-cell">
-        <Button 
-          text={item.active ? 'Delete' : 'Restore'} 
-          onClick={() => item.active ? this.openModal('confirm') : this.props.toggleActive(item.id)}
+        <Button
+          className={item.active ? 'weather-button_warn' : 'weather-button_calm '}
+          text={item.active ? 'Delete' : 'Restore'}
+          onClick={() => item.active
+            ? this.openModal('confirm', {item})
+            : this.props.toggleActive(item.id)
+          }
         />
       </div>
+
         { this.props.showMoveButtons ?
             <div className="weather-cell">
-              <Button  text="Up" onClick={() => this.props.moveUp(item.id)} />
+              <Button
+                text="Up"
+                onClick={() => this.props.moveUp(item.id)}
+              />
             </div> : ''
         }
         {
-          this.props.showMoveButtons ? 
+          this.props.showMoveButtons ?
           <div className="weather-cell">
-            <Button text="Down" onClick={() => this.props.moveDown(item.id)} />
+            <Button
+              text="Down"
+              onClick={() => this.props.moveDown(item.id)}
+            />
           </div> : ''
         }
-       
+
     </div>
-    
+
   }
 
   render() {
     return (
-      <div class="weather-table">
+      <div className="weather-table">
         {this.props.weather.map(item => this.weatherItem(item))}
       </div>
     );

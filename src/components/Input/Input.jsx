@@ -4,14 +4,14 @@ import './Input.css';
 /**
  * Input component
  */
-export const Input = ({value, placeholder, onChange}) => {
+export const Input = ({value, placeholder, onChange, className=''}) => {
   return (
-    <input 
+    <input
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-      className="weather-input"
-      type="text" 
+      className={`weather-input ${className}`}
+      type="text"
     ></input>
   );
 }

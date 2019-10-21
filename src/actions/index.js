@@ -4,6 +4,7 @@ export const actionTypes = {
   TOGGLE: 'TOGGLE',
   UP: 'UP',
   DOWN: 'DONW',
+  CHANGE: 'CHANGE',
   OPEN_MODAL: 'OPEN_MODAL',
   CLOSE_MODAL: 'CLOSE_MODAL',
 }
@@ -28,6 +29,13 @@ export const down = id => ({
 export const toggle = id => ({
   type: actionTypes.TOGGLE,
   id
+});
+
+export const change = ({id, name, temp}) => ({
+  type: actionTypes.CHANGE,
+  id: id,
+  name: name,
+  temp: temp
 });
 
 export const openModal = ({modalType, modalProps}) => ({

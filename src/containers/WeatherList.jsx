@@ -6,7 +6,6 @@ import { toggle, up, down, openModal, closeModal } from '../actions';
  * Фильтруем данные в зависимости от выбранной вкладки
  */
 function _getFiltredData(state, props) {
-  console.log(props);
   switch (props.filter) {
     case 'ACTIVE':
       return state.weather.filter(el => el.active);

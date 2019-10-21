@@ -2,13 +2,13 @@
   display: flex;
 }
 .weather-tab__link {
-  width: 130px;
+  width: 136px;
   height: 20px;
   cursor: pointer;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #d6d6d6;
+  border-bottom: 2px solid #d3d3d3;
 }
 .weather-tabs__tab a {
   text-decoration: none;
@@ -16,7 +16,7 @@
   text-transform: uppercase;
 }
 .weather-tabs__tab_active .weather-tab__link {
-  border-bottom: 3px solid #135f8b;
+  border-bottom: 3px solid #8bb5f3;
 }
 .weather-tabs__navbar {
   margin-bottom: 30px;

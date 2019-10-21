@@ -1,35 +1,13 @@
 import { actionTypes } from "../actions";
 
-const initial_state = [
-  {
-    id: 1,
-    name: 'Урюпинск 1',
-    temp: '-10',
-    active: true
-  },
-  {
-    id: 2,
-    name: 'Урюпинск 2',
-    temp: '-10',
-    active: true
-  },
-  {
-    id: 3,
-    name: 'Урюпинск 3',
-    temp: '-10',
-    active: true
-  },
-  {
-    id: 4,
-    name: 'Урюпинск 4',
-    temp: '-10',
-    active: true
-  },
-];
-
-const weather = (state = initial_state, action) => { 
+/**
+ * Weather reducer
+ */
+const weather = (state = [], action) => {
   let index;
   switch (action.type) {
+
+    // Add new weather data
     case actionTypes.ADD:
       return [
         ...state,
@@ -39,11 +17,15 @@ const weather = (state = initial_state, action) => {
           temp: action.temp,
           active: true
         }
-      ]
+      ];
+
+    // Toggle action
     case actionTypes.TOGGLE:
       return state.map(weather =>
         weather.id === action.id ? { ...weather, active: !weather.active } : weather
-      )
+      );
+
+    // Move row to UP
     case actionTypes.UP:
       index = state.findIndex(el => el.id === action.id);
       if (index === 0){
@@ -54,7 +36,9 @@ const weather = (state = initial_state, action) => {
         state[index],
         state[index-1],
         ...state.slice(index+1, state.length),
-      ]
+      ];
+
+    // Move row to DOWN
     case actionTypes.DOWN:
         index = state.findIndex(el => el.id === action.id);
         if (index === state.length-1){
@@ -65,9 +49,17 @@ const weather = (state = initial_state, action) => {
           state[index+1],
           state[index],
           ...state.slice(index+2, state.length),
-        ]
-    default:
-      return state;
+        ];
+
+      // Change weather row
+      case actionTypes.CHANGE:
+        return state.map(weather =>
+            weather.id === action.id ? { ...weather, name: action.name, temp: action.temp } : weather
+          )
+
+      // Default
+      default:
+        return state;
   }
 }
 

@@ -1,6 +1,14 @@
 .weather-input {
-  width: 200px;
+  width: 250px;
   height: 30px;
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: 2px solid #d3d3d3;
+  padding-left: 4px;
+  font-size: 0.9em;
+}
+.weather-input_width-200 {
+  width: 200px;
+}
+.weather-input_width-100 {
+  width: 100px;
 }

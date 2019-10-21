@@ -1,9 +1,10 @@
 
 import React from 'react'
 import ReactModal from 'react-modal';
-import ModalConfirm from './ModalConfirm';
 import ModalChange from './ModalChange';
+import Button from '../Button/Button';
 import './Modal.css'
+import { ModalConfirm } from './ModalConfirm';
 
 export const modalTypes = {
   confirm: 'confirm',
@@ -13,22 +14,40 @@ export const modalTypes = {
 class Modal extends React.Component{
   constructor(props) {
     super(props);
-    console.log(111, props);
     this.state = {
       modalIsOpen: false,
-      modalType: null
+      modalType: null,
+      item: {}
     };
-    this.closeModal = this.closeModal.bind(this)
+    this.close = this.close.bind(this);
+    this.confirm = this.confirm.bind(this);
+    this.change = this.change.bind(this);
   }
 
-  closeModal() {
+  close() {
     this.props.closeModal();
+  }
+
+  confirm() {
+    this.props.toggleActive(this.state.item.id);
+    this.close();
+  }
+
+  change({name, temp}) {
+    this.props.change({
+      id: this.state.item.id,
+      name: name,
+      temp: temp
+    });
+    this.close();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps !== this.props) {
       this.setState({
-        modalIsOpen: nextProps.modal.isOpen
+        modalType: nextProps.modal.modalType,
+        modalIsOpen: nextProps.modal.isOpen,
+        item: nextProps.modal.modalProps.item ? nextProps.modal.modalProps.item : {}
       })
     }
   }
@@ -38,16 +57,18 @@ class Modal extends React.Component{
       <div>
         <ReactModal
           isOpen={this.state.modalIsOpen}
-          // ariaHideApp={false}
-          // className="weather-modal__dialog"
-          // overlayClassName="weather-modal__overlay"
-        > 
-          {this.state.modalType === modalTypes.change ? <ModalChange/> : <ModalConfirm/>}
-          <div onClick={this.closeModal}>СКРОЙСЫ</div>
+          ariaHideApp={false}
+          className="weather-modal__dialog"
+        >
+          {
+            this.state.modalType === modalTypes.change
+              ? <ModalChange item={this.state.item} change={this.change} close={this.close}/>
+              : <ModalConfirm item={this.state.item} confirm={this.confirm} close={this.close}/>
+          }
         </ReactModal>
       </div>
     )
-  } 
+  }
 }
 
 export default Modal
