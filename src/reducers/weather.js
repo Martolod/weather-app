@@ -9,6 +9,10 @@ const weather = (state = [], action) => {
 
     // Add new weather data
     case actionTypes.ADD:
+      if (state.find(weather => weather.id === action.id) !== undefined) {
+        // Oops :)
+        action.id = action.id + Math.random();
+      }
       return [
         ...state,
         {
