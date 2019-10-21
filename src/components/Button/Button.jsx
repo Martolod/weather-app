@@ -15,6 +15,7 @@ class Button extends React.Component {
     this.onClickButton = this.onClickButton.bind(this);
   }
 
+  /** Button click handler */
   onClickButton() {
     if (this.props.disabled) {
       return;

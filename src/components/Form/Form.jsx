@@ -20,10 +20,12 @@ class Form extends React.Component {
     this.onChangeInput = this.onChangeInput.bind(this);
   }
 
+  /** OnChange Input handler */
   onChangeInput(event) {
     this.setState({value: event.target.value});
   }
 
+  /** Get weather data */
   getWeather() {
     if (this.state.loading) {
       return;

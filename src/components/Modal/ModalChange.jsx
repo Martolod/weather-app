@@ -3,6 +3,9 @@ import React from 'react';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 
+/**
+ * Modal for change city weather
+ */
 class ModalChange extends React.Component {
 
   constructor(props) {
@@ -15,10 +18,12 @@ class ModalChange extends React.Component {
     this.onChangeTemp = this.onChangeTemp.bind(this);
   }
 
+  /** Name input onChange handler */
   onChangeName(event) {
     this.setState({name: event.target.value});
   }
 
+  /** Temperature input onChange handler */
   onChangeTemp(event) {
     this.setState({temp: event.target.value});
   }

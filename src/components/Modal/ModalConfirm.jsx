@@ -2,6 +2,9 @@
 import React from 'react'
 import Button from '../Button/Button';
 
+/**
+ * Modal for confirm delete weather item
+ */
 export const ModalConfirm = ({item, confirm, close}) => {
   return (
     <div>

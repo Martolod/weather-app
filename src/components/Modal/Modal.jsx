@@ -2,15 +2,13 @@
 import React from 'react'
 import ReactModal from 'react-modal';
 import ModalChange from './ModalChange';
-import Button from '../Button/Button';
 import './Modal.css'
 import { ModalConfirm } from './ModalConfirm';
+import { modalTypes } from '../../actions';
 
-export const modalTypes = {
-  confirm: 'confirm',
-  change: 'change'
-}
-
+/**
+ * Main modal component
+ */
 class Modal extends React.Component{
   constructor(props) {
     super(props);
@@ -24,15 +22,18 @@ class Modal extends React.Component{
     this.change = this.change.bind(this);
   }
 
+  /** Close button handler */
   close() {
     this.props.closeModal();
   }
 
+  /** Confirm button handler */
   confirm() {
     this.props.toggleActive(this.state.item.id);
     this.close();
   }
 
+  /** Change button handler */
   change({name, temp}) {
     this.props.change({
       id: this.state.item.id,
@@ -42,6 +43,7 @@ class Modal extends React.Component{
     this.close();
   }
 
+  /** Hook */
   componentWillReceiveProps(nextProps) {
     if (nextProps !== this.props) {
       this.setState({

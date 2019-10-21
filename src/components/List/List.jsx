@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import './List.css'
+import { modalTypes } from '../../actions';
 
 /**
  * Weather list component
@@ -12,6 +13,7 @@ class List extends React.Component {
     this.weatherItem = this.weatherItem.bind(this);
   }
 
+  /** Open modal window */
   openModal(type, props) {
     this.props.openModal({
       modalType: type,
@@ -19,17 +21,17 @@ class List extends React.Component {
     });
   }
 
-
+  /** Return template for weather item */
   weatherItem(item) {
     return <div key={item.id} className="weather-row">
       <div
-        onClick={() => this.openModal('change', {item})}
+        onClick={() => this.openModal(modalTypes.change, {item})}
         className="weather-cell weather-cell_pointer"
       >
         {item.name}
       </div>
       <div
-        onClick={() => this.openModal('change', {item})}
+        onClick={() => this.openModal(modalTypes.change, {item})}
         className="weather-cell weather-cell_pointer"
       >
         {item.temp}&#8451;
@@ -39,7 +41,7 @@ class List extends React.Component {
           className={item.active ? 'weather-button_warn' : 'weather-button_calm '}
           text={item.active ? 'Delete' : 'Restore'}
           onClick={() => item.active
-            ? this.openModal('confirm', {item})
+            ? this.openModal(modalTypes.confirm, {item})
             : this.props.toggleActive(item.id)
           }
         />
