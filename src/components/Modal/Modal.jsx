@@ -45,7 +45,7 @@ class Modal extends React.Component{
 
   /** Hook */
   componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props) {
+    if (nextProps.modal.isOpen !== this.props.modal.isOpen) {
       this.setState({
         modalType: nextProps.modal.modalType,
         modalIsOpen: nextProps.modal.isOpen,
